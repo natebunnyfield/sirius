@@ -1,0 +1,15 @@
+# compiled py and c scripts
+*.py[cod]
+*.so
+
+# virtualenv directories
+bin/
+include/
+lib/
+local/
+share/
+.Python
+
+# platform and ide
+.DS_Store
+.idea/
