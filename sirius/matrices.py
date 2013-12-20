@@ -12,8 +12,8 @@ CONFIG_DIR = os.path.abspath(os.path.join(__file__, '..', 'shipping_configs'))
 # ups ground
 UPS_GROUND_ZIP_TO_ZONE = yaml.load(open(os.path.join(CONFIG_DIR, 'ups_ground_zip_to_zone.yaml'), 'r'))
 UPS_GROUND_ZONE_WEIGHT_PRICE = yaml.load(open(os.path.join(CONFIG_DIR, 'ups_ground_zone_weight_price.yaml'), 'r'))
-UPS_GROUND_ZONE_44 = [line for line in open(os.path.join(CONFIG_DIR, 'zone44.txt'))]
-UPS_GROUND_ZONE_46 = [line for line in open(os.path.join(CONFIG_DIR, 'zone46.txt'))]
+UPS_GROUND_ZONE_44 = [int(line.rstrip()) for line in open(os.path.join(CONFIG_DIR, 'zone44.txt'))]
+UPS_GROUND_ZONE_46 = [int(line.rstrip()) for line in open(os.path.join(CONFIG_DIR, 'zone46.txt'))]
 
 # ups mail innovations
 UPS_MI_RATES_OZ = yaml.load(open(os.path.join(CONFIG_DIR, 'ups_mi_rates_oz.yaml')))
