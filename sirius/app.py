@@ -3,7 +3,6 @@
 
 from itertools import combinations
 import json
-from pprint import pprint
 
 from flask import Flask, request
 
@@ -73,28 +72,38 @@ def optimize_shipping():
         for __ in xrange(qty):
             items.append(Item(**item))
 
-    # create orders/bundles from items combinations
-    orders = []
-    for combination in make_combinations(items):  # full tuple of tuples of items. ex: ( (one,two), (three,) )
+    if len(items) == 1:
+        box = Box()
+        box.items.extend(items)
+        method, cost = get_cheapest_option(zipcode, box.weight)
+        box.shipping_method = method
+        box.shipping_cost = cost
         order = Order()
-        for grouping in combination:  # tuple of items. ex (one,two) from above
-            box = Box()
-            # add items to the box
-            box.items.extend(grouping)
-            # get cheapest shipping option for this box
-            method, cost = get_cheapest_option(zipcode, box.weight)
-            box.shipping_method = method
-            box.shipping_cost = cost
-            # add box to order
-            order.boxes.append(box)
-        # add order to list of all possible combinations
-        orders.append(order)
+        order.boxes.append(box)
+        return str(order.to_json())
 
-    # get the cheapest order combination
-    cheapest = min(orders, key=lambda o: o.shipping_cost)
+    else:  # create orders/bundles from items combinations
+        orders = []
+        for combination in make_combinations(items):  # full tuple of tuples of items. ex: ( (one,two), (three,) )
+            order = Order()
+            for grouping in combination:  # tuple of items. ex (one,two) from above
+                box = Box()
+                # add items to the box
+                box.items.extend(grouping)
+                # get cheapest shipping option for this box
+                method, cost = get_cheapest_option(zipcode, box.weight)
+                box.shipping_method = method
+                box.shipping_cost = cost
+                # add box to order
+                order.boxes.append(box)
+            # add order to list of all possible combinations
+            orders.append(order)
 
-    # respond
-    return str(cheapest.to_json())
+        # get the cheapest order combination
+        cheapest = min(orders, key=lambda o: o.shipping_cost)
+
+        # respond
+        return str(cheapest.to_json())
 
 
 if __name__ == '__main__':
