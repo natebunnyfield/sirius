@@ -6,7 +6,7 @@ import json
 
 from flask import Flask, request
 
-from matrices import get_cheapest_option
+from matrices import get_cheapest_option, get_irregular_price
 from models import Item, Box, Order
 
 
@@ -65,45 +65,73 @@ def optimize_shipping():
     zipcode = data['zip']
 
     # create items
-    items = []
+    regular, irregular = [], []
     for item in data['items']:
         qty = item['qty']
         del item['qty']
         for __ in xrange(qty):
-            items.append(Item(**item))
+            if 'is_irregular' in item:
+                if item['is_irregular']:
+                    irregular.append(Item(**item))
+                else:
+                    regular.append(Item(**item))
+            else:
+                regular.append(Item(**item))
 
-    if len(items) == 1:
+    # process irregular items
+    irregular_boxes = []
+    for item in irregular:
         box = Box()
-        box.items.extend(items)
-        method, cost = get_cheapest_option(zipcode, box.weight)
-        box.shipping_method = method
+        box.items.append(item)
+        cost = get_irregular_price(zipcode, box.weight)
+        box.shipping_method = 'UPS Ground'
         box.shipping_cost = cost
-        order = Order()
-        order.boxes.append(box)
-        return str(order.to_json())
+        irregular_boxes.append(box)
 
-    else:  # create orders/bundles from items combinations
-        orders = []
-        for combination in make_combinations(items):  # full tuple of tuples of items. ex: ( (one,two), (three,) )
+    # process regular items
+    if len(regular):
+        if len(regular) == 1:
+            box = Box()
+            box.items.extend(regular)
+            method, cost = get_cheapest_option(zipcode, box.weight)
+            box.shipping_method = method
+            box.shipping_cost = cost
             order = Order()
-            for grouping in combination:  # tuple of items. ex (one,two) from above
-                box = Box()
-                # add items to the box
-                box.items.extend(grouping)
-                # get cheapest shipping option for this box
-                method, cost = get_cheapest_option(zipcode, box.weight)
-                box.shipping_method = method
-                box.shipping_cost = cost
-                # add box to order
-                order.boxes.append(box)
-            # add order to list of all possible combinations
-            orders.append(order)
+            order.boxes.append(box)
+            # add irregular boxes to order
+            order.boxes.extend(irregular_boxes)
+            return str(order.to_json())
 
-        # get the cheapest order combination
-        cheapest = min(orders, key=lambda o: o.shipping_cost)
+        else:  # create orders/bundles from items combinations
+            orders = []
+            for combination in make_combinations(regular):  # full tuple of tuples of items. ex: ( (one,two), (three,) )
+                order = Order()
+                for grouping in combination:  # tuple of items. ex (one,two) from above
+                    box = Box()
+                    # add items to the box
+                    box.items.extend(grouping)
+                    # get cheapest shipping option for this box
+                    method, cost = get_cheapest_option(zipcode, box.weight)
+                    box.shipping_method = method
+                    box.shipping_cost = cost
+                    # add box to order
+                    order.boxes.append(box)
+                # add irregular boxes to order
+                order.boxes.extend(irregular_boxes)
+                # add order to list of all possible combinations
+                orders.append(order)
 
-        # respond
-        return str(cheapest.to_json())
+            # get the cheapest order combination
+            cheapest = min(orders, key=lambda o: o.shipping_cost)
+
+            # respond
+            return str(cheapest.to_json())
+
+    # no regular items:
+    else:
+        order = Order()
+        order.boxes.extend(irregular_boxes)
+        return str(order.to_json())
 
 
 if __name__ == '__main__':

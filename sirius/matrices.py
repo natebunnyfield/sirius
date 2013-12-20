@@ -56,3 +56,20 @@ def get_cheapest_option(zipcode, weight):
 
     # get cheapest option
     return min(options, key=lambda x: x[1])
+
+
+def get_irregular_price(zipcode, weight):
+    """
+    does much of the same as `get_cheapest_option`, but skips all MI
+    """
+    weight = ceil(float(weight) / 16)
+    if zipcode in UPS_GROUND_ZONE_44:
+        zone = '044'
+    elif zipcode in UPS_GROUND_ZONE_46:
+        zone = '046'
+    else:  # it's in the lower 48
+        zipcode = str(zipcode)[:3]  # ups only uses the first three digits
+        zone = UPS_GROUND_ZIP_TO_ZONE[zipcode]
+    for tier in sorted(UPS_GROUND_ZONE_WEIGHT_PRICE[zone]):
+        if weight <= tier:
+            return UPS_GROUND_ZONE_WEIGHT_PRICE[zone][tier]
