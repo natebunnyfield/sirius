@@ -123,6 +123,7 @@ def optimize_shipping():
 
             # get the cheapest order combination
             cheapest = min(orders, key=lambda o: o.shipping_cost)
+            cheapest.shipping_cost = round(cheapest.shipping_cost, 2)
 
             # respond
             return str(cheapest.to_json())
