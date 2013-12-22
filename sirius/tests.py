@@ -208,14 +208,14 @@ def test2():
                 'items': [
                     {
                         'sku': 'stick',
-                        'qty': 1
+                        'qty': 2
                     }
                 ],
-                'cost': 1.7,
-                'method': 'UPS Mail Innovations'
+                'cost': 8.88,
+                'method': 'UPS Ground'
             }
         ],
-        'cost': 1.7
+        'cost': 8.88
     }
     response = optimize_shipping(data)
     print response
@@ -243,15 +243,19 @@ def test3():
             {
                 'items': [
                     {
+                        'sku': 'ball',
+                        'qty': 1
+                    },
+                    {
                         'sku': 'stick',
                         'qty': 1
                     }
                 ],
-                'cost': 1.7,
+                'cost': 2.05,
                 'method': 'UPS Mail Innovations'
             }
         ],
-        'cost': 1.7
+        'cost': 2.05
     }
     response = optimize_shipping(data)
     print response
@@ -280,19 +284,28 @@ def test4():
         ]
     }
     expected = {
-        'boxes': [
-            {
-                'items': [
-                    {
-                        'sku': 'stick',
-                        'qty': 1
-                    }
-                ],
-                'cost': 1.7,
-                'method': 'UPS Mail Innovations'
-            }
-        ],
-        'cost': 1.7
+        'boxes':
+            [
+                {
+                    'items': [
+                        {
+                            'sku': 'ball',
+                            'qty': 5
+                        },
+                        {
+                            'sku': 'treat',
+                            'qty': 3
+                        },
+                        {
+                            'sku': 'pizzle',
+                            'qty': 1
+                        }
+                    ],
+                    'cost': 10.67,
+                    'method': 'UPS Ground'
+                }
+            ],
+        'cost': 10.67
     }
     response = optimize_shipping(data)
     print response
@@ -316,15 +329,15 @@ def test5():
             {
                 'items': [
                     {
-                        'sku': 'stick',
+                        'sku': 'antler',
                         'qty': 1
                     }
                 ],
-                'cost': 1.7,
-                'method': 'UPS Mail Innovations'
+                'cost': 8.64,
+                'method': 'UPS Ground'
             }
         ],
-        'cost': 1.7
+        'cost': 8.64
     }
     response = optimize_shipping(data)
     print response
@@ -363,15 +376,43 @@ def test6():
             {
                 'items': [
                     {
-                        'sku': 'stick',
+                        'sku': 'ball',
+                        'qty': 5
+                    },
+                    {
+                        'sku': 'treat',
+                        'qty': 3
+                    },
+                    {
+                        'sku': 'pizzle',
                         'qty': 1
                     }
                 ],
-                'cost': 1.7,
-                'method': 'UPS Mail Innovations'
+                'cost': 9.68,
+                'method': 'UPS Ground'
+            },
+            {
+                'items': [
+                    {
+                        'sku': 'antler',
+                        'qty': 1
+                    }
+                ],
+                'cost': 8.88,
+                'method': 'UPS Ground'
+            },
+            {
+                'items': [
+                    {
+                        'sku': 'antler',
+                        'qty': 1
+                    }
+                ],
+                'cost': 8.88,
+                'method': 'UPS Ground'
             }
         ],
-        'cost': 1.7
+        'cost': 27.44
     }
     response = optimize_shipping(data)
     print response
@@ -394,15 +435,15 @@ def test7():
             {
                 'items': [
                     {
-                        'sku': 'stick',
+                        'sku': 'ball',
                         'qty': 1
                     }
                 ],
-                'cost': 1.7,
+                'cost': 1.9,
                 'method': 'UPS Mail Innovations'
             }
         ],
-        'cost': 1.7
+        'cost': 1.9
     }
     response = optimize_shipping(data)
     print response
