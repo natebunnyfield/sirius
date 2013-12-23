@@ -270,494 +270,826 @@ class TestOptimizer(unittest.TestCase):
     def test_0(self):
         input_data = {"zip": "60084", "items": [{"sku": "sample bull sticks", "weight": 4, "qty": 1}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 1)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Mail Innovations')
 
     def test_1(self):
         input_data = {"zip": "60084", "items": [{"sku": "bag bully sticks", "weight": 30, "qty": 1}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 1)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Mail Innovations')
 
     def test_2(self):
         input_data = {"zip": "60084", "items": [{"sku": "bulk bully sticks", "weight": 180, "qty": 1}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 1)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Ground')
 
     def test_3(self):
         input_data = {"zip": "96810", "items": [{"sku": "sample bull sticks", "weight": 4, "qty": 1}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 1)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Mail Innovations')
 
     def test_4(self):
         input_data = {"zip": "96810", "items": [{"sku": "bag bully sticks", "weight": 30, "qty": 1}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 1)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Mail Innovations')
 
     def test_5(self):
         input_data = {"zip": "96810", "items": [{"sku": "bulk bully sticks", "weight": 180, "qty": 1}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 1)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Ground')
 
     def test_6(self):
         input_data = {"zip": "60084", "items": [{"sku": "sample bull sticks", "weight": 4, "qty": 1, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 1)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Ground')
 
     def test_7(self):
         input_data = {"zip": "60084", "items": [{"sku": "bag bully sticks", "weight": 30, "qty": 1, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 1)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Ground')
 
     def test_8(self):
         input_data = {"zip": "60084", "items": [{"sku": "bulk bully sticks", "weight": 180, "qty": 1, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 1)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Ground')
 
     def test_9(self):
         input_data = {"zip": "96810", "items": [{"sku": "sample bull sticks", "weight": 4, "qty": 1, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 1)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Ground')
 
     def test_10(self):
         input_data = {"zip": "96810", "items": [{"sku": "bag bully sticks", "weight": 30, "qty": 1, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 1)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Ground')
 
     def test_11(self):
         input_data = {"zip": "96810", "items": [{"sku": "bulk bully sticks", "weight": 180, "qty": 1, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 1)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Ground')
 
     # single item, qty > 1
     def test_12(self):
         input_data = {"zip": "02345", "items": [{"sku": "bag bull sticks", "weight": 10, "qty": 2}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 2)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Mail Innovations')
+        self.assertEqual(response.boxes[1].shipping_method, 'UPS Mail Innovations')
 
     def test_13(self):
         input_data = {"zip": "21432", "items": [{"sku": "sample bully sticks", "weight": 6, "qty": 2}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 1)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Mail Innovations')
 
     def test_14(self):
         input_data = {"zip": "54093", "items": [{"sku": "big bag bully sticks", "weight": 20, "qty": 3}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 1)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Mail Innovations')
 
     def test_15(self):
         input_data = {"zip": "60631", "items": [{"sku": "bulk bully sticks", "weight": 150, "qty": 4}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 1)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Ground')
 
     def test_16(self):
         input_data = {"zip": "45455", "items": [{"sku": "bulk bull sticks", "weight": 160, "qty": 2}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 1)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Ground')
 
     def test_17(self):
         input_data = {"zip": "99701", "items": [{"sku": "bag bull sticks", "weight": 10, "qty": 2}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 2)
+        for box in response.boxes:
+            self.assertEqual(box.shipping_method, 'UPS Mail Innovations')
 
     def test_18(self):
         input_data = {"zip": "99701", "items": [{"sku": "sample bully sticks", "weight": 6, "qty": 2}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 1)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Mail Innovations')
 
     def test_19(self):
         input_data = {"zip": "99701", "items": [{"sku": "big bag bully sticks", "weight": 20, "qty": 3}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 1)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Mail Innovations')
 
     def test_20(self):
         input_data = {"zip": "99701", "items": [{"sku": "bulk bully sticks", "weight": 150, "qty": 4}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 1)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Ground')
 
     def test_21(self):
         input_data = {"zip": "99701", "items": [{"sku": "bulk bull sticks", "weight": 160, "qty": 2}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 1)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Ground')
 
     def test_22(self):
         input_data = {"zip": "02345", "items": [{"sku": "bag bull sticks", "weight": 10, "qty": 2, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 2)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Ground')
 
     def test_23(self):
         input_data = {"zip": "21432", "items": [{"sku": "sample bully sticks", "weight": 6, "qty": 2, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 2)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Ground')
 
     def test_24(self):
         input_data = {"zip": "54093", "items": [{"sku": "big bag bully sticks", "weight": 20, "qty": 3, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 3)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Ground')
 
     def test_25(self):
         input_data = {"zip": "60631", "items": [{"sku": "bulk bully sticks", "weight": 150, "qty": 4, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 4)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Ground')
 
     def test_26(self):
         input_data = {"zip": "45455", "items": [{"sku": "bulk bull sticks", "weight": 160, "qty": 2, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 2)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Ground')
 
     def test_27(self):
         input_data = {"zip": "99701", "items": [{"sku": "bag bull sticks", "weight": 10, "qty": 2, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 2)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Ground')
 
     def test_28(self):
         input_data = {"zip": "99701", "items": [{"sku": "sample bully sticks", "weight": 6, "qty": 2, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 2)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Ground')
 
     def test_29(self):
         input_data = {"zip": "99701", "items": [{"sku": "big bag bully sticks", "weight": 20, "qty": 3, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 3)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Ground')
 
     def test_30(self):
         input_data = {"zip": "99701", "items": [{"sku": "bulk bully sticks", "weight": 150, "qty": 4, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 4)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Ground')
 
     def test_31(self):
         input_data = {"zip": "99701", "items": [{"sku": "bulk bull sticks", "weight": 160, "qty": 2, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 2)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Ground')
 
     # multiple, 1 ea
     def test_32(self):
         input_data = {"zip": "64231", "items": [{"sku": "bag bully sticks", "weight": 10, "qty": 1}, {"sku": "big bag bully sticks", "weight": 14, "qty": 1}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 2)
+        for box in response.boxes:
+            self.assertEqual(box.shipping_method, 'UPS Mail Innovations')
 
     def test_33(self):
         input_data = {"zip": "64231", "items": [{"sku": "bag bully sticks", "weight": 8, "qty": 1}, {"sku": "sample bully sticks", "weight": 6, "qty": 1}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 1)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Mail Innovations')
 
     def test_34(self):
         input_data = {"zip": "64231", "items": [{"sku": "kong filler", "weight": 32, "qty": 1}, {"sku": "bigger bag bully sticks", "weight": 32, "qty": 1}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 1)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Mail Innovations')
 
     def test_35(self):
         input_data = {"zip": "64231", "items": [{"sku": "bulk bully sticks", "weight": 72, "qty": 1}, {"sku": "bulk kong filler", "weight": 72, "qty": 1}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 1)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Ground')
 
     def test_36(self):
         input_data = {"zip": "64231", "items": [{"sku": "massive bulk bully sticks", "weight": 160, "qty": 1}, {"sku": "massive bulk kong filler", "weight": 160, "qty": 1}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 1)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Ground')
 
     def test_37(self):
         input_data = {"zip": "99701", "items": [{"sku": "bag bully sticks", "weight": 10, "qty": 1}, {"sku": "big bag bully sticks", "weight": 14, "qty": 1}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 2)
+        for box in response.boxes:
+            self.assertEqual(box.shipping_method, 'UPS Mail Innovations')
 
     def test_38(self):
         input_data = {"zip": "99701", "items": [{"sku": "bag bully sticks", "weight": 8, "qty": 1}, {"sku": "sample bully sticks", "weight": 6, "qty": 1}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 1)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Mail Innovations')
 
     def test_39(self):
         input_data = {"zip": "99701", "items": [{"sku": "kong filler", "weight": 32, "qty": 1}, {"sku": "bigger bag bully sticks", "weight": 32, "qty": 1}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 1)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Mail Innovations')
 
     def test_40(self):
         input_data = {"zip": "99701", "items": [{"sku": "bulk bully sticks", "weight": 72, "qty": 1}, {"sku": "bulk kong filler", "weight": 72, "qty": 1}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 2)
+        for box in response.boxes:
+            self.assertEqual(box.shipping_method, 'UPS Mail Innovations')
 
     def test_41(self):
         input_data = {"zip": "99701", "items": [{"sku": "massive bulk bully sticks", "weight": 160, "qty": 1}, {"sku": "massive bulk kong filler", "weight": 160, "qty": 1}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 1)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Ground')
 
     def test_42(self):
         input_data = {"zip": "64231", "items": [{"sku": "bag bully sticks", "weight": 10, "qty": 1, "is_irregular": True}, {"sku": "big bag bully sticks", "weight": 14, "qty": 1, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 2)
+        for box in response.boxes:
+            self.assertEqual(box.shipping_method, 'UPS Ground')
 
     def test_43(self):
         input_data = {"zip": "64231", "items": [{"sku": "bag bully sticks", "weight": 8, "qty": 1, "is_irregular": True}, {"sku": "sample bully sticks", "weight": 6, "qty": 1, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 2)
+        for box in response.boxes:
+            self.assertEqual(box.shipping_method, 'UPS Ground')
 
     def test_44(self):
         input_data = {"zip": "64231", "items": [{"sku": "kong filler", "weight": 32, "qty": 1, "is_irregular": True}, {"sku": "bigger bag bully sticks", "weight": 32, "qty": 1, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 2)
+        for box in response.boxes:
+            self.assertEqual(box.shipping_method, 'UPS Ground')
 
     def test_45(self):
         input_data = {"zip": "64231", "items": [{"sku": "bulk bully sticks", "weight": 72, "qty": 1, "is_irregular": True}, {"sku": "bulk kong filler", "weight": 72, "qty": 1, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 2)
+        for box in response.boxes:
+            self.assertEqual(box.shipping_method, 'UPS Ground')
 
     def test_46(self):
         input_data = {"zip": "64231", "items": [{"sku": "massive bulk bully sticks", "weight": 160, "qty": 1, "is_irregular": True}, {"sku": "massive bulk kong filler", "weight": 160, "qty": 1, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 2)
+        for box in response.boxes:
+            self.assertEqual(box.shipping_method, 'UPS Ground')
 
     def test_47(self):
         input_data = {"zip": "99701", "items": [{"sku": "bag bully sticks", "weight": 10, "qty": 1, "is_irregular": True}, {"sku": "big bag bully sticks", "weight": 14, "qty": 1, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 2)
+        for box in response.boxes:
+            self.assertEqual(box.shipping_method, 'UPS Ground')
 
     def test_48(self):
         input_data = {"zip": "99701", "items": [{"sku": "bag bully sticks", "weight": 8, "qty": 1, "is_irregular": True}, {"sku": "sample bully sticks", "weight": 6, "qty": 1, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 2)
+        for box in response.boxes:
+            self.assertEqual(box.shipping_method, 'UPS Ground')
 
     def test_49(self):
         input_data = {"zip": "99701", "items": [{"sku": "kong filler", "weight": 32, "qty": 1, "is_irregular": True}, {"sku": "bigger bag bully sticks", "weight": 32, "qty": 1, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 2)
+        for box in response.boxes:
+            self.assertEqual(box.shipping_method, 'UPS Ground')
 
     def test_50(self):
         input_data = {"zip": "99701", "items": [{"sku": "bulk bully sticks", "weight": 72, "qty": 1, "is_irregular": True}, {"sku": "bulk kong filler", "weight": 72, "qty": 1, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 2)
+        for box in response.boxes:
+            self.assertEqual(box.shipping_method, 'UPS Ground')
 
     def test_51(self):
         input_data = {"zip": "99701", "items": [{"sku": "massive bulk bully sticks", "weight": 160, "qty": 1, "is_irregular": True}, {"sku": "massive bulk kong filler", "weight": 160, "qty": 1, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 2)
+        for box in response.boxes:
+            self.assertEqual(box.shipping_method, 'UPS Ground')
 
     def test_52(self):
         input_data = {"zip": "64231", "items": [{"sku": "bag bully sticks", "weight": 10, "qty": 1, "is_irregular": True}, {"sku": "big bag bully sticks", "weight": 14, "qty": 1}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 2)
+        self.assertEqual(len([box for box in response.boxes if box.shipping_method == 'UPS Ground']), 1)
+        self.assertEqual(len([box for box in response.boxes if box.shipping_method == 'UPS Mail Innovations']), 1)
 
     def test_53(self):
         input_data = {"zip": "64231", "items": [{"sku": "bag bully sticks", "weight": 8, "qty": 1, "is_irregular": True}, {"sku": "sample bully sticks", "weight": 6, "qty": 1}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 2)
+        self.assertEqual(len([box for box in response.boxes if box.shipping_method == 'UPS Ground']), 1)
+        self.assertEqual(len([box for box in response.boxes if box.shipping_method == 'UPS Mail Innovations']), 1)
 
     def test_54(self):
         input_data = {"zip": "64231", "items": [{"sku": "kong filler", "weight": 32, "qty": 1, "is_irregular": True}, {"sku": "bigger bag bully sticks", "weight": 32, "qty": 1}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 2)
+        self.assertEqual(len([box for box in response.boxes if box.shipping_method == 'UPS Ground']), 1)
+        self.assertEqual(len([box for box in response.boxes if box.shipping_method == 'UPS Mail Innovations']), 1)
 
     def test_55(self):
         input_data = {"zip": "64231", "items": [{"sku": "bulk bully sticks", "weight": 72, "qty": 1, "is_irregular": True}, {"sku": "bulk kong filler", "weight": 72, "qty": 1}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 2)
+        self.assertEqual(len([box for box in response.boxes if box.shipping_method == 'UPS Ground']), 2)
+        self.assertEqual(len([box for box in response.boxes if box.shipping_method == 'UPS Mail Innovations']), 0)
 
     def test_56(self):
         input_data = {"zip": "64231", "items": [{"sku": "massive bulk bully sticks", "weight": 160, "qty": 1, "is_irregular": True}, {"sku": "massive bulk kong filler", "weight": 160, "qty": 1}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 2)
+        self.assertEqual(len([box for box in response.boxes if box.shipping_method == 'UPS Ground']), 2)
+        self.assertEqual(len([box for box in response.boxes if box.shipping_method == 'UPS Mail Innovations']), 0)
 
     def test_57(self):
         input_data = {"zip": "99701", "items": [{"sku": "bag bully sticks", "weight": 10, "qty": 1, "is_irregular": True}, {"sku": "big bag bully sticks", "weight": 14, "qty": 1}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 2)
+        self.assertEqual(len([box for box in response.boxes if box.shipping_method == 'UPS Ground']), 1)
+        self.assertEqual(len([box for box in response.boxes if box.shipping_method == 'UPS Mail Innovations']), 1)
 
     def test_58(self):
         input_data = {"zip": "99701", "items": [{"sku": "bag bully sticks", "weight": 8, "qty": 1, "is_irregular": True}, {"sku": "sample bully sticks", "weight": 6, "qty": 1}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 2)
+        self.assertEqual(len([box for box in response.boxes if box.shipping_method == 'UPS Ground']), 1)
+        self.assertEqual(len([box for box in response.boxes if box.shipping_method == 'UPS Mail Innovations']), 1)
 
     def test_59(self):
         input_data = {"zip": "99701", "items": [{"sku": "kong filler", "weight": 32, "qty": 1, "is_irregular": True}, {"sku": "bigger bag bully sticks", "weight": 32, "qty": 1}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 2)
+        self.assertEqual(len([box for box in response.boxes if box.shipping_method == 'UPS Ground']), 1)
+        self.assertEqual(len([box for box in response.boxes if box.shipping_method == 'UPS Mail Innovations']), 1)
 
     def test_60(self):
         input_data = {"zip": "99701", "items": [{"sku": "bulk bully sticks", "weight": 72, "qty": 1, "is_irregular": True}, {"sku": "bulk kong filler", "weight": 72, "qty": 1}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 2)
+        self.assertEqual(len([box for box in response.boxes if box.shipping_method == 'UPS Ground']), 1)
+        self.assertEqual(len([box for box in response.boxes if box.shipping_method == 'UPS Mail Innovations']), 1)
 
     def test_61(self):
         input_data = {"zip": "99701", "items": [{"sku": "massive bulk bully sticks", "weight": 160, "qty": 1, "is_irregular": True}, {"sku": "massive bulk kong filler", "weight": 160, "qty": 1}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 2)
+        self.assertEqual(len([box for box in response.boxes if box.shipping_method == 'UPS Ground']), 2)
+        self.assertEqual(len([box for box in response.boxes if box.shipping_method == 'UPS Mail Innovations']), 0)
 
     # multiple items, >1 ea
     def test_62(self):
         input_data = {"zip": "64231", "items": [{"sku": "bag bully sticks", "weight": 10, "qty": 3}, {"sku": "big bag bully sticks", "weight": 14, "qty": 3}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 1)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Ground')
 
     def test_63(self):
         input_data = {"zip": "64231", "items": [{"sku": "bag bully sticks", "weight": 8, "qty": 3}, {"sku": "sample bully sticks", "weight": 6, "qty": 3}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 1)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Mail Innovations')
 
     def test_64(self):
         input_data = {"zip": "64231", "items": [{"sku": "kong filler", "weight": 32, "qty": 3}, {"sku": "bigger bag bully sticks", "weight": 32, "qty": 3}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 1)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Ground')
 
     def test_65(self):
         input_data = {"zip": "64231", "items": [{"sku": "bulk bully sticks", "weight": 72, "qty": 3}, {"sku": "bulk kong filler", "weight": 72, "qty": 3}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 1)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Ground')
 
     def test_66(self):
         input_data = {"zip": "64231", "items": [{"sku": "massive bulk bully sticks", "weight": 160, "qty": 3}, {"sku": "massive bulk kong filler", "weight": 160, "qty": 3}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 1)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Ground')
 
     def test_67(self):
         input_data = {"zip": "99701", "items": [{"sku": "bag bully sticks", "weight": 10, "qty": 3}, {"sku": "big bag bully sticks", "weight": 14, "qty": 3}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 1)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Mail Innovations')
 
     def test_68(self):
         input_data = {"zip": "99701", "items": [{"sku": "bag bully sticks", "weight": 8, "qty": 3}, {"sku": "sample bully sticks", "weight": 6, "qty": 3}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 1)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Mail Innovations')
 
     def test_69(self):
         input_data = {"zip": "99701", "items": [{"sku": "kong filler", "weight": 32, "qty": 3}, {"sku": "bigger bag bully sticks", "weight": 32, "qty": 3}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 3)
+        for box in response.boxes:
+            self.assertEqual(box.shipping_method, 'UPS Mail Innovations')
 
     def test_70(self):
         input_data = {"zip": "99701", "items": [{"sku": "bulk bully sticks", "weight": 72, "qty": 3}, {"sku": "bulk kong filler", "weight": 72, "qty": 3}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 6)
+        for box in response.boxes:
+            self.assertEqual(box.shipping_method, 'UPS Mail Innovations')
 
     def test_71(self):
         input_data = {"zip": "99701", "items": [{"sku": "massive bulk bully sticks", "weight": 160, "qty": 3}, {"sku": "massive bulk kong filler", "weight": 160, "qty": 3}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 1)
+        self.assertEqual(response.boxes[0].shipping_method, 'UPS Ground')
 
     def test_72(self):
         input_data = {"zip": "64231", "items": [{"sku": "bag bully sticks", "weight": 10, "qty": 3, "is_irregular": True}, {"sku": "big bag bully sticks", "weight": 14, "qty": 3, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 6)
+        for box in response.boxes:
+            self.assertEqual(box.shipping_method, 'UPS Ground')
 
     def test_73(self):
         input_data = {"zip": "64231", "items": [{"sku": "bag bully sticks", "weight": 8, "qty": 3, "is_irregular": True}, {"sku": "sample bully sticks", "weight": 6, "qty": 3, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 6)
+        for box in response.boxes:
+            self.assertEqual(box.shipping_method, 'UPS Ground')
 
     def test_74(self):
         input_data = {"zip": "64231", "items": [{"sku": "kong filler", "weight": 32, "qty": 3, "is_irregular": True}, {"sku": "bigger bag bully sticks", "weight": 32, "qty": 3, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 6)
+        for box in response.boxes:
+            self.assertEqual(box.shipping_method, 'UPS Ground')
 
     def test_75(self):
         input_data = {"zip": "64231", "items": [{"sku": "bulk bully sticks", "weight": 72, "qty": 3, "is_irregular": True}, {"sku": "bulk kong filler", "weight": 72, "qty": 3, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 6)
+        for box in response.boxes:
+            self.assertEqual(box.shipping_method, 'UPS Ground')
 
     def test_76(self):
         input_data = {"zip": "64231", "items": [{"sku": "massive bulk bully sticks", "weight": 160, "qty": 3, "is_irregular": True}, {"sku": "massive bulk kong filler", "weight": 160, "qty": 3, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 6)
+        for box in response.boxes:
+            self.assertEqual(box.shipping_method, 'UPS Ground')
 
     def test_77(self):
         input_data = {"zip": "99701", "items": [{"sku": "bag bully sticks", "weight": 10, "qty": 3, "is_irregular": True}, {"sku": "big bag bully sticks", "weight": 14, "qty": 3, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 6)
+        for box in response.boxes:
+            self.assertEqual(box.shipping_method, 'UPS Ground')
 
     def test_78(self):
         input_data = {"zip": "99701", "items": [{"sku": "bag bully sticks", "weight": 8, "qty": 3, "is_irregular": True}, {"sku": "sample bully sticks", "weight": 6, "qty": 3, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 6)
+        for box in response.boxes:
+            self.assertEqual(box.shipping_method, 'UPS Ground')
 
     def test_79(self):
         input_data = {"zip": "99701", "items": [{"sku": "kong filler", "weight": 32, "qty": 3, "is_irregular": True}, {"sku": "bigger bag bully sticks", "weight": 32, "qty": 3, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 6)
+        for box in response.boxes:
+            self.assertEqual(box.shipping_method, 'UPS Ground')
 
     def test_80(self):
         input_data = {"zip": "99701", "items": [{"sku": "bulk bully sticks", "weight": 72, "qty": 3, "is_irregular": True}, {"sku": "bulk kong filler", "weight": 72, "qty": 3, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 6)
+        for box in response.boxes:
+            self.assertEqual(box.shipping_method, 'UPS Ground')
 
     def test_81(self):
         input_data = {"zip": "99701", "items": [{"sku": "massive bulk bully sticks", "weight": 160, "qty": 3, "is_irregular": True}, {"sku": "massive bulk kong filler", "weight": 160, "qty": 3, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 6)
+        for box in response.boxes:
+            self.assertEqual(box.shipping_method, 'UPS Ground')
 
     def test_82(self):
         input_data = {"zip": "64231", "items": [{"sku": "bag bully sticks", "weight": 10, "qty": 3, "is_irregular": True}, {"sku": "big bag bully sticks", "weight": 14, "qty": 3}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 4)
+        self.assertEqual(len([box for box in response.boxes if box.shipping_method == 'UPS Ground']), 3)
+        self.assertEqual(len([box for box in response.boxes if box.shipping_method == 'UPS Mail Innovations']), 1)
 
     def test_83(self):
         input_data = {"zip": "64231", "items": [{"sku": "bag bully sticks", "weight": 8, "qty": 3, "is_irregular": True}, {"sku": "sample bully sticks", "weight": 6, "qty": 3}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 5)
+        self.assertEqual(len([box for box in response.boxes if box.shipping_method == 'UPS Ground']), 3)
+        self.assertEqual(len([box for box in response.boxes if box.shipping_method == 'UPS Mail Innovations']), 2)
 
     def test_84(self):
         input_data = {"zip": "64231", "items": [{"sku": "kong filler", "weight": 32, "qty": 3, "is_irregular": True}, {"sku": "bigger bag bully sticks", "weight": 32, "qty": 3}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
+        self.assertEqual(len(response.boxes), 4)
+        self.assertEqual(len([box for box in response.boxes if box.shipping_method == 'UPS Ground']), 4)
+        self.assertEqual(len([box for box in response.boxes if box.shipping_method == 'UPS Mail Innovations']), 0)
 
     def test_85(self):
         input_data = {"zip": "64231", "items": [{"sku": "bulk bully sticks", "weight": 72, "qty": 3, "is_irregular": True}, {"sku": "bulk kong filler", "weight": 72, "qty": 3}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
 
     def test_86(self):
         input_data = {"zip": "64231", "items": [{"sku": "massive bulk bully sticks", "weight": 160, "qty": 3, "is_irregular": True}, {"sku": "massive bulk kong filler", "weight": 160, "qty": 3}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
 
     def test_87(self):
         input_data = {"zip": "99701", "items": [{"sku": "bag bully sticks", "weight": 10, "qty": 3, "is_irregular": True}, {"sku": "big bag bully sticks", "weight": 14, "qty": 3}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
 
     def test_88(self):
         input_data = {"zip": "99701", "items": [{"sku": "bag bully sticks", "weight": 8, "qty": 3, "is_irregular": True}, {"sku": "sample bully sticks", "weight": 6, "qty": 3}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
 
     def test_89(self):
         input_data = {"zip": "99701", "items": [{"sku": "kong filler", "weight": 32, "qty": 3, "is_irregular": True}, {"sku": "bigger bag bully sticks", "weight": 32, "qty": 3}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
 
     def test_90(self):
         input_data = {"zip": "99701", "items": [{"sku": "bulk bully sticks", "weight": 72, "qty": 3, "is_irregular": True}, {"sku": "bulk kong filler", "weight": 72, "qty": 3}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
 
     def test_91(self):
         input_data = {"zip": "99701", "items": [{"sku": "massive bulk bully sticks", "weight": 160, "qty": 3, "is_irregular": True}, {"sku": "massive bulk kong filler", "weight": 160, "qty": 3}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
 
     # multiple items, mix qty
     def test_92(self):
         input_data = {"zip": "64231", "items": [{"sku": "bag bully sticks", "weight": 10, "qty": 1}, {"sku": "big bag bully sticks", "weight": 14, "qty": 3}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
 
     def test_93(self):
         input_data = {"zip": "64231", "items": [{"sku": "bag bully sticks", "weight": 8, "qty": 1}, {"sku": "sample bully sticks", "weight": 6, "qty": 3}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
 
     def test_94(self):
         input_data = {"zip": "64231", "items": [{"sku": "kong filler", "weight": 32, "qty": 3}, {"sku": "bigger bag bully sticks", "weight": 32, "qty": 1}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
 
     def test_95(self):
         input_data = {"zip": "64231", "items": [{"sku": "bulk bully sticks", "weight": 72, "qty": 3}, {"sku": "bulk kong filler", "weight": 72, "qty": 1}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
 
     def test_96(self):
         input_data = {"zip": "64231", "items": [{"sku": "massive bulk bully sticks", "weight": 160, "qty": 1}, {"sku": "massive bulk kong filler", "weight": 160, "qty": 3}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
 
     def test_97(self):
         input_data = {"zip": "99701", "items": [{"sku": "bag bully sticks", "weight": 10, "qty": 3}, {"sku": "big bag bully sticks", "weight": 14, "qty": 1}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
 
     def test_98(self):
         input_data = {"zip": "99701", "items": [{"sku": "bag bully sticks", "weight": 8, "qty": 1}, {"sku": "sample bully sticks", "weight": 6, "qty": 3}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
 
     def test_99(self):
         input_data = {"zip": "99701", "items": [{"sku": "kong filler", "weight": 32, "qty": 3}, {"sku": "bigger bag bully sticks", "weight": 32, "qty": 1}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
 
     def test_100(self):
         input_data = {"zip": "99701", "items": [{"sku": "bulk bully sticks", "weight": 72, "qty": 1}, {"sku": "bulk kong filler", "weight": 72, "qty": 3}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
 
     def test_101(self):
         input_data = {"zip": "99701", "items": [{"sku": "massive bulk bully sticks", "weight": 160, "qty": 3}, {"sku": "massive bulk kong filler", "weight": 160, "qty": 1}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
 
     def test_102(self):
         input_data = {"zip": "64231", "items": [{"sku": "bag bully sticks", "weight": 10, "qty": 1, "is_irregular": True}, {"sku": "big bag bully sticks", "weight": 14, "qty": 3, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
 
     def test_103(self):
         input_data = {"zip": "64231", "items": [{"sku": "bag bully sticks", "weight": 8, "qty": 3, "is_irregular": True}, {"sku": "sample bully sticks", "weight": 6, "qty": 1, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
 
     def test_104(self):
         input_data = {"zip": "64231", "items": [{"sku": "kong filler", "weight": 32, "qty": 1, "is_irregular": True}, {"sku": "bigger bag bully sticks", "weight": 32, "qty": 3, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
 
     def test_105(self):
         input_data = {"zip": "64231", "items": [{"sku": "bulk bully sticks", "weight": 72, "qty": 3, "is_irregular": True}, {"sku": "bulk kong filler", "weight": 72, "qty": 1, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
 
     def test_106(self):
         input_data = {"zip": "64231", "items": [{"sku": "massive bulk bully sticks", "weight": 160, "qty": 1, "is_irregular": True}, {"sku": "massive bulk kong filler", "weight": 160, "qty": 3, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
 
     def test_107(self):
         input_data = {"zip": "99701", "items": [{"sku": "bag bully sticks", "weight": 10, "qty": 3, "is_irregular": True}, {"sku": "big bag bully sticks", "weight": 14, "qty": 1, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
 
     def test_108(self):
         input_data = {"zip": "99701", "items": [{"sku": "bag bully sticks", "weight": 8, "qty": 1, "is_irregular": True}, {"sku": "sample bully sticks", "weight": 6, "qty": 3, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
 
     def test_109(self):
         input_data = {"zip": "99701", "items": [{"sku": "kong filler", "weight": 32, "qty": 3, "is_irregular": True}, {"sku": "bigger bag bully sticks", "weight": 32, "qty": 1, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
 
     def test_110(self):
         input_data = {"zip": "99701", "items": [{"sku": "bulk bully sticks", "weight": 72, "qty": 1, "is_irregular": True}, {"sku": "bulk kong filler", "weight": 72, "qty": 3, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
 
     def test_111(self):
         input_data = {"zip": "99701", "items": [{"sku": "massive bulk bully sticks", "weight": 160, "qty": 3, "is_irregular": True}, {"sku": "massive bulk kong filler", "weight": 160, "qty": 1, "is_irregular": True}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
 
     def test_112(self):
         input_data = {"zip": "64231", "items": [{"sku": "bag bully sticks", "weight": 10, "qty": 1, "is_irregular": True}, {"sku": "big bag bully sticks", "weight": 14, "qty": 3}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
 
     def test_113(self):
         input_data = {"zip": "64231", "items": [{"sku": "bag bully sticks", "weight": 8, "qty": 3, "is_irregular": True}, {"sku": "sample bully sticks", "weight": 6, "qty": 1}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
 
     def test_114(self):
         input_data = {"zip": "64231", "items": [{"sku": "kong filler", "weight": 32, "qty": 1, "is_irregular": True}, {"sku": "bigger bag bully sticks", "weight": 32, "qty": 3}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
 
     def test_115(self):
         input_data = {"zip": "64231", "items": [{"sku": "bulk bully sticks", "weight": 72, "qty": 3, "is_irregular": True}, {"sku": "bulk kong filler", "weight": 72, "qty": 1}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
 
     def test_116(self):
         input_data = {"zip": "64231", "items": [{"sku": "massive bulk bully sticks", "weight": 160, "qty": 1, "is_irregular": True}, {"sku": "massive bulk kong filler", "weight": 160, "qty": 3}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
 
     def test_117(self):
         input_data = {"zip": "99701", "items": [{"sku": "bag bully sticks", "weight": 10, "qty": 3, "is_irregular": True}, {"sku": "big bag bully sticks", "weight": 14, "qty": 1}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
 
     def test_118(self):
         input_data = {"zip": "99701", "items": [{"sku": "bag bully sticks", "weight": 8, "qty": 1, "is_irregular": True}, {"sku": "sample bully sticks", "weight": 6, "qty": 3}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
 
     def test_119(self):
         input_data = {"zip": "99701", "items": [{"sku": "kong filler", "weight": 32, "qty": 3, "is_irregular": True}, {"sku": "bigger bag bully sticks", "weight": 32, "qty": 1}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
 
     def test_120(self):
         input_data = {"zip": "99701", "items": [{"sku": "bulk bully sticks", "weight": 72, "qty": 1, "is_irregular": True}, {"sku": "bulk kong filler", "weight": 72, "qty": 3}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
 
     def test_121(self):
         input_data = {"zip": "99701", "items": [{"sku": "massive bulk bully sticks", "weight": 160, "qty": 3, "is_irregular": True}, {"sku": "massive bulk kong filler", "weight": 160, "qty": 1}]}
         response = self.optimize_shipping(input_data)
+        self.assertIsInstance(response, Order)
 
 
 if __name__ == '__main__':
