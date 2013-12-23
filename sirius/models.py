@@ -66,7 +66,7 @@ class Order:
 
     @property
     def shipping_cost(self):
-        return sum([box.shipping_cost for box in self.boxes])
+        return round(sum([box.shipping_cost for box in self.boxes]), 2)
 
     def to_json(self):
         return {
